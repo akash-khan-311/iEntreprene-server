@@ -41,6 +41,12 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const jwtPayload = {
         email: user.email,
         role: user.role || '',
+        profileImg: user.profileImg,
+        status: user.status,
+        name: {
+            firstName: user.name.firstName,
+            lastName: user.name.lastName,
+        }
     };
     const accessToken = (0, auth_utils_1.createToken)(jwtPayload, config_1.default.jwt_access_secret, config_1.default.jwt_access_expires_in);
     const refreshToken = (0, auth_utils_1.createToken)(jwtPayload, config_1.default.jwt_refresh_secret, config_1.default.jwt_refresh_expires_in);

@@ -18,10 +18,9 @@ const signUpUser = async (payload: TSignUpUser): Promise<TUser> => {
   if (isUserExists) {
     throw new AppError(httpStatus.CONFLICT, 'Email is already taken!');
   }
-   const newUser = await User.create(payload);
+  const newUser = await User.create(payload);
   return newUser;
 };
-
 
 const loginUser = async (payload: TLoginUser) => {
   // Always select password for login
@@ -43,7 +42,7 @@ const loginUser = async (payload: TLoginUser) => {
     name: {
       firstName: user.name.firstName,
       lastName: user.name.lastName,
-    }
+    },
   };
 
   const accessToken = createToken(
